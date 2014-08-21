@@ -1,0 +1,17 @@
+puppet_shared_directory
+
+Share a directory of stuff with other systems using the puppet master's 
+built-in fileserver
+
+License
+-------
+
+
+Contact
+-------
+
+
+Support
+-------
+
+Please log tickets and issues at our [Projects site](http://projects.example.com)
