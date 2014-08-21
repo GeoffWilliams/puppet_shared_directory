@@ -43,9 +43,9 @@ class puppet_shared_directory::master(
   }
 
   # nice alias in roots homedir 
-  file { "/root${shared}":
+  file { "/root${share_path}":
     ensure => symlink,
-    target => $shared,
+    target => $share_path,
   }
 
 
