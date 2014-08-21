@@ -4,9 +4,10 @@ class puppet_shared_directory::agent(
     $mount_point = "extra_files"
   ) {
 
-  $pfs_uri = "puppet:///${mount_point}/"
+  $pfs_uri = "puppet:///${mount_point}"
 
   file { $target_dir:
+    ensure  => directory,
     recurse => remote,
     source  => $pfs_uri,
   }
