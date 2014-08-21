@@ -27,13 +27,13 @@ class puppet_shared_directory::master(
     owner   => "root",
     group   => "pe-puppet",
     mode    => "0644",
-    notify  => Service["pe-puppet"]
+    notify  => Service["pe-httpd"]
   }
 
 
   # take ownership of pe-puppet module (yuk) so that we can restart it for 
   # fileserver. The propper way would be to break this out to another module...
-  service { "pe-puppet":
+  service { "pe-httpd":
     ensure => running,
     enable => true,
   }
