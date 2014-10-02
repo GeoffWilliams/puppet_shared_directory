@@ -1,0 +1,17 @@
+{
+  "name": "geoffwilliams-puppet_shared_directory",
+  "version": "1.0.0",
+  "author": "Geoff Williams",
+  "license": "Licensed under (GNU GPL v2.0)",
+  "summary": "Share a directory of stuff with other systems using the puppet master's built-in fileserver",
+  "source": "https://github.com/GeoffWilliams/puppet_shared_directory",
+  "project_page": "https://github.com/GeoffWilliams/puppet_shared_directory",
+  "issues_url": "https://github.com/GeoffWilliams/puppet_shared_directory",
+  "tags": ["shared", "directory"],
+  "operatingsystem_support": [
+    {
+    "operatingsystem":"RedHat",
+    "operatingsystemrelease":[ "6.0" ]
+    },
+  ]
+}
