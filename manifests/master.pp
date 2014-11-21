@@ -32,16 +32,6 @@ class puppet_shared_directory::master(
     notify  => Service["pe-puppetserver"]
   }
 
-  # ... and we need to add our share to the TOP of auth.conf
-  file { "/etc/puppetlabs/puppet/auth.conf":
-    ensure  => file,
-    content => template("puppet_shared_directory/auth.conf.erb"),
-    owner   => "root",
-    group   => "root",
-    mode    => "0644",
-    notify  => Service["pe-puppetserver"],
-  }
-
   # nice alias in roots homedir 
   file { "/root${share_path}":
     ensure => symlink,
