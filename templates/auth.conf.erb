@@ -1,8 +1,7 @@
+# ! this file is managed by the geoffwilliams-puppet_shared_directory module !
 path /<%= @mount_point %>
 auth any
 allow <%= @share_hosts %>
-
-
 
 path ~ ^/catalog/([^/]+)$
 method find
@@ -43,6 +42,11 @@ method find, save
 auth any
 allow *
 
+path  /v2.0/environments
+method find
+auth yes
+allow *
+
 path  /certificate_status
 method find, search, save, destroy
 auth yes
@@ -56,15 +60,7 @@ allow pe-internal-dashboard
 path  /resource_type
 method find, search
 auth yes
-allow pe-internal-dashboard
+allow pe-internal-dashboard, pe-internal-classifier
 
 path  /
 auth any
-
-path /file_metadata/extra_files
-auth any
-allow *
-path /extra_files
-auth any
-allow *
-

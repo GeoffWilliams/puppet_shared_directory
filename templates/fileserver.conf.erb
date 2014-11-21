@@ -1,3 +1,5 @@
+# ! this file is managed by the geoffwilliams-puppet_shared_directory module !
+#
 # This file consists of arbitrarily named sections/modules
 # defining where files are served from and to whom
 
@@ -8,3 +10,8 @@
 [<%= @mount_point %>]
   path <%= @share_path %>
   allow <%= @share_hosts %>
+
+[pe_modules]
+path /opt/puppet/share/installer/modules
+allow *
+

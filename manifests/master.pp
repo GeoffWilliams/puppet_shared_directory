@@ -29,7 +29,7 @@ class puppet_shared_directory::master(
     owner   => "root",
     group   => "pe-puppet",
     mode    => "0644",
-    notify  => Service["pe-httpd"]
+    notify  => Service["pe-puppetserver"]
   }
 
   # ... and we need to add our share to the TOP of auth.conf
@@ -39,7 +39,7 @@ class puppet_shared_directory::master(
     owner   => "root",
     group   => "root",
     mode    => "0644",
-    notify  => Service["pe-httpd"],
+    notify  => Service["pe-puppetserver"],
   }
 
   # nice alias in roots homedir 
