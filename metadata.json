@@ -1,6 +1,6 @@
 {
   "name": "geoffwilliams-puppet_shared_directory",
-  "version": "1.1.0",
+  "version": "1.1.2",
   "author": "Geoff Williams",
   "license": "Licensed under (GNU GPL v2.0)",
   "summary": "Share a directory of stuff with other systems using the puppet master's built-in fileserver",
@@ -17,7 +17,7 @@
   "requirements": [
     {
       "name": "pe",
-      "version_requirement": ">= 3.7"
+      "version_requirement": ">= 3.7.0"
     }
   ]
 }
