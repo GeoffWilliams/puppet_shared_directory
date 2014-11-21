@@ -14,6 +14,8 @@ class puppet_shared_directory::master(
     $share_mode  = "0755",
 ) {
 
+  $fileserver = '/etc/puppetlabs/puppet/fileserver.conf'
+  
   # create directory to hold files to share
   file { $share_path:
     ensure => directory,
@@ -22,15 +24,20 @@ class puppet_shared_directory::master(
     mode   => $share_mode,
   }
 
-  # we need to add our share to the puppet fileserver
-  file { "/etc/puppetlabs/puppet/fileserver.conf":
-    ensure  => file,
-    content => template("puppet_shared_directory/fileserver.conf.erb"),
-    owner   => "root",
-    group   => "pe-puppet",
-    mode    => "0644",
+  # use augeas to change fileserver.conf to prevent ownership conflict
+  # between this module and PE
+  augeas { "fileserver.conf ${mount_point}":
+    changes   => [
+      "set /files/${fileserver}/${mount_point}/path ${share_path}",
+      "set /files/${fileserver}/${mount_point}/allow ${share_hosts}",
+    ],
+    incl      => $fileserver,
+    load_path => '/opt/puppet/share/augeas/lenses/dist',
+    lens      => 'PuppetFileserver.lns',
     notify  => Service["pe-puppetserver"]
   }
+
+
 
   # nice alias in roots homedir 
   file { "/root${share_path}":
